@@ -1,0 +1,52 @@
+{"Application":{
+    "parameters": {
+        "name": "test",
+        "id": "test"
+    },
+    "services": [
+        {
+            "parameters": {
+                "pluginName": "CruiseDatabase",
+                "action": "cDBCreatePool",
+                "service": "CreatePoolService",
+                "poolName": "MyPool",
+                "DriverClassName": "org.mariadb.jdbc.Driver",
+                "jdbcUrl": "jdbc:mysql://cruisesample.canimgkllxkw.us-west-2.rds.amazonaws.com:3306/CruiseSample?useSSL=false",
+                "username": "stevechappell",
+                "password": "Java#1111",
+                "maximumPoolSize": "25",
+                "minimumIdle": "5"
+            }
+        },
+        {
+            "parameters": {
+                "pluginName": "CruiseJS",
+                "action": "RunScript",
+                "service": "*UUID",
+                "Script": "var ser = cruSession.getService(\"InsertService\");for(var i=0;i<10;i++){ser.Parameter(\"FIRSTNAME\",'Name'+i);print(i);cruSession.goService(ser,true,true);}"
+            }
+        },
+        {
+            "parameters": {
+                "execute":"false",
+                "pluginName": "CruiseDatabase",
+                "action": "insert",
+                "service": "InsertService",
+                "poolName": "MyPool",
+                "tableName": "CUSTOMER",
+                "CUSTOMERINDEX":"*UUID",
+                "FIRSTNAME": "Stevex",
+                "LASTNAME": "Chappellx",
+                "MIDDLENAME":"J",
+                "includeQuery": "true"
+            }
+        }
+    ],
+    "credentials": {
+        "parameters": {
+            "username": "admin",
+            "password": "admin"
+        }
+    }
+}
+}

@@ -1,0 +1,25 @@
+
+{"Application":
+	{
+	    "parameters": {
+	        "name": "CruiseDirector",
+	        "id": "Generated"
+	    },
+	    "services": [
+	        {
+	            "parameters": {
+	                "pluginName": "CruiseCorePlugin",
+	                "action": "getSystemDate",
+	                "timeZone": "UTC",
+	                "service": "~UUID"
+	            }
+	        }
+	    ],
+	    "credentials": {
+	        "parameters": {
+	            "username": "admin",
+	            "password": "admin"
+	        }
+	    }
+	}
+}
